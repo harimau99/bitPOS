@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="bitPOS">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>bitPOS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="app.js"></script>
+    <script src="directives/directives.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body ng-controller="DataController as data">
+    <div ng-controller="TabController as tab">
+      <!--  Tab Navigation  -->
+      <ul class="nav nav-pills">
+        <li ng-class="{ active:tab.isSet(1) }">
+          <a href="" ng-click="tab.setTab(1)">Wallet</a>
+        </li>
+        <li ng-class="{ active:tab.isSet(2) }">
+          <a href="" ng-click="tab.setTab(2)">Transactions</a>
+        </li>
+        <li ng-class="{ active:tab.isSet(3) }">
+          <a href="" ng-click="tab.setTab(3)">Request</a>
+        </li>
+        <li ng-class="{ active:tab.isSet(4) }">
+          <a href="" ng-click="tab.setTab(4)">Status</a>
+        </li>
+        <li>
+          <a href="" ng-click="tab.reload()">reload</a>
+        </li>
+        <li>
+          <a href="" ng-click="data.update()">data</a>
+        </li>
+      </ul>
+      <!--  Wallet Tab's Content  -->
+      <wallet ng-show="tab.isSet(1)"></wallet>
+      <!--  Transactions Tab's Content  -->
+      <transactions ng-show="tab.isSet(2)"></transactions>
+      <!--  Request Tab's Content  -->
+      <request ng-show="tab.isSet(3)"></request>
+      <!--  Status Tab's Content  -->
+      <status ng-show="tab.isSet(4)"></status>
+    </div>
+  </body>
+</html>

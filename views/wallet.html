@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="row rowbox">
+         <div class="col-xs-12 well colbox">
+            <h4>My Wallet</h4>
+            <p>Balance: {{data.wallet.balance}} BTC</p>
+            <p>Default Address: {{data.wallet.defaultAddress}}</p>
+        </div>
+      </div>
+      <div class="row rowbox">
+        <div class="col-xs-12 well colbox">
+        <h4>Last Transaction</h4>
+          <p>Time: {{data.wallet.lastTransaction.time}}
+          <br>Time delta: {{data.wallet.lastTransaction.timedelta}}
+          <br>Amount: {{data.wallet.lastTransaction.amount}}
+          <br>Confirmations: {{data.wallet.lastTransaction.confirmations}}</p>
+        </div> 
+      </div>
+    </div>
+    <div class="col-xs-6 well">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=bitcoin:mvwtUwzBT7EUW4tNB39R33MF9G4vrpyznH?amount=9&label=JamesG-Pi&size=200x200">
+    </div>
+  </div>
+</div>
+  

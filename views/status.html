@@ -1,0 +1,16 @@
+<div class="container" ng-controller="StatusCtrl as status">
+  <div class="row rowbox">
+    <div class="col-xs-12 well">
+      <h4>My Wallet</h4>
+      <div class="col-xs-6"><p>Connections: {{data.status.connections}}</p></div>
+      <div class="col-xs-6"><progressbar class="progress-striped active" max="8" value="7" type="info"><i>{{data.status.connections}} / 8</i></progressbar></div>
+      <div class="col-xs-6"><progressbar animate="false" value="dynamic" type="success"><b>{{data.status.connections}}</b></progressbar></div>
+      <div class="col-xs-6"><progressbar class="progress-striped active" value="dynamic" type="{{type}}">{{type}} <i ng-show="showWarning">!!! Watch out !!!</i></progressbar></div>
+      <div>
+        <p>Local Chain Height: {{data.status.localHeight}}</p>
+        <p>Max Chain Height: {{data.status.maxHeight}}</p>
+        <p>Next Block Fee: {{data.status.nextBlockFee}}</p>
+      </div>
+    </div>
+  </div>
+</div>

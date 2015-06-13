@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row rowbox colbox">
+    <div class="col-xs-3"><strong>Time</strong></div>
+    <div class="col-xs-3"><strong>Amount</strong></div>
+    <div class="col-xs-6"><strong>fromAddress</strong></div>
+  </div>
+  <div ng-repeat="transaction in data.transactions | limitTo: 5">
+    <div class="row well rowbox2 colbox">
+      <div class="col-xs-3 colbox">{{transaction.time}}</div>
+      <div class="col-xs-3 colbox">{{transaction.amount}}</div>
+      <div class="col-xs-6 colbox ellipsis">{{transaction.address}}</div>
+    </div>
+  </div>
+</div>

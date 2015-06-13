@@ -1,0 +1,56 @@
+body {
+  max-width: 480px;
+}
+
+.container {
+  max-width: 480px;
+}
+
+.rowbox {
+  padding-left: 2px; 
+  padding-right: 2px;
+}
+
+.colbox {
+  margin-bottom: 2px;
+  padding:5px 15px 5px 15px;
+}
+
+.rowbox2 {
+  margin-left: -13px;
+  margin-right: -13px;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+a {
+  color: #ac005f;
+}
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+.nav-pills {
+  margin: 2px;
+}
+
+.nav-pills > li > a:hover,
+.nav-pills > li > a:focus{
+  color: #ac005f;
+}
+
+.nav-pills > li.active > a,
+.btn-primary,
+.btn-primary:focus {
+  background: #ac005f;
+  border: 0;
+}
+
+.nav-pills > li.active > a:hover,
+.btn-primary:hover {
+  background: #ac005f;
+}
