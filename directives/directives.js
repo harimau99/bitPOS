@@ -1,4 +1,4 @@
-var app = angular.module('bitPOS-directives', ['ui.bootstrap']);
+var app = angular.module('bitPOS-directives', []);
 
 app.directive("wallet", function() {
   return {

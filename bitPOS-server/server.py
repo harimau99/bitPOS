@@ -1,7 +1,6 @@
 from flask import Flask, render_template
 from flask.ext.cors import CORS
 import datetime
-import time
 from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
 import requests
 import json
@@ -47,8 +46,8 @@ def wallet():
 @app.route("/transactions")
 def transactions():
     transactions = rpc_connection.listtransactions("", 5)
-    message = {'t1': transactions[0], 't2': transactions[1], 't3': transactions[2],
-               't4': transactions[3], 't5': transactions[4]}
+    message = {'t1': transactions[0], 't2': transactions[1],
+    't3': transactions[2], 't4': transactions[3], 't5': transactions[4]}
     return json.dumps(message, cls=DecimalEncoder)
 
 
@@ -68,12 +67,19 @@ def get_max_height():
     global max_height
     r = requests.get("http://blockexplorer.com/testnet/q/getblockcount")
     if r.status_code != 200:
-        print "Error 1"
+        print("Error 1")
     else:
         max_height = int(r.text)
 
+
 rpc_connection = AuthServiceProxy(
     "http://%s:%s@127.0.0.1:8332" % ("rpcuser", "hellothere"))
+try:
+    rpc_connection.getinfo()
+except:
+    print("Bitcoin Core not available")
+    # MAKE NEW ENDPOINT TO RELAY THIS
+
 
 max_height = 0
 get_max_height()
