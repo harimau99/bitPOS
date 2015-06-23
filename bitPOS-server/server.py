@@ -22,54 +22,66 @@ def index():
     return render_template("index5.html")
 
 
-@app.route("/time")
-def time():
-    return str(datetime.datetime.now())
-
-
 @app.route("/wallet")
 def wallet():
-    balance = float(rpc_connection.getbalance())
-    default_address = rpc_connection.getaccountaddress("")
-    last_transaction = rpc_connection.listtransactions("", 1)[0]
-    last_time = last_transaction["time"]
-    last_timedelta = int(datetime.datetime.now().strftime('%s')) - last_transaction["time"]
-    last_amount = float(last_transaction["amount"])
-    last_confirmations = last_transaction["confirmations"]
+    try:
+        balance = float(rpc_connection.getbalance())
+        default_address = rpc_connection.getaccountaddress("")
+        last_transaction = rpc_connection.listtransactions("", 1)[0]
+        last_time = last_transaction["time"]
+        last_timedelta = int(datetime.datetime.now().strftime('%s')) - last_transaction["time"]
+        last_amount = float(last_transaction["amount"])
+        last_confirmations = last_transaction["confirmations"]
 
-    message = {"balance": balance, "defaultAddress": default_address, "lastTransaction": {
-               "time": last_time, "timedelta": last_timedelta,
-               "amount": last_amount, "confirmations": last_confirmations}}
-    return json.dumps(message)
+        message = {"balance": balance, "defaultAddress": default_address, "lastTransaction": {
+                   "time": last_time, "timedelta": last_timedelta,
+                   "amount": last_amount, "confirmations": last_confirmations}}
+        return json.dumps(message)
+    except:
+        print('Catch this (wallet)')
+        return 'Catch this (wallet)'
 
 
 @app.route("/transactions")
 def transactions():
-    transactions = rpc_connection.listtransactions("", 5)
-    message = {'t1': transactions[0], 't2': transactions[1],
-    't3': transactions[2], 't4': transactions[3], 't5': transactions[4]}
-    return json.dumps(message, cls=DecimalEncoder)
+    try:
+        transactions = rpc_connection.listtransactions("", 5)
+        message = {'t1': transactions[0], 't2': transactions[1],
+        't3': transactions[2], 't4': transactions[3], 't5': transactions[4]}
+        return json.dumps(message, cls=DecimalEncoder)
+    except:
+        print('Catch this (transactions)')
+        return 'Catch this (transactions)'
 
 
 @app.route("/status")
 def status():
-    local_height = rpc_connection.getblockcount()
-    if local_height > max_height:
-        get_max_height()
-    connections = rpc_connection.getconnectioncount()
-    next_block_fee = rpc_connection.estimatefee(1)
-    message = {"maxHeight": max_height, "localHeight": local_height,
-               "connections": connections, 'nextBlockFee': next_block_fee}
-    return json.dumps(message, cls=DecimalEncoder)
+    try:
+        local_height = rpc_connection.getblockcount()
+        if local_height > max_height:
+            get_max_height()
+        connections = rpc_connection.getconnectioncount()
+        next_block_fee = rpc_connection.estimatefee(1)
+        message = {"maxHeight": max_height, "localHeight": local_height,
+                   "connections": connections, 'nextBlockFee': next_block_fee}
+        print(message.values())
+        return json.dumps(message, cls=DecimalEncoder)
+    except:
+        print('Catch this (status)')
+        return 'Catch this (status)'
 
 
 def get_max_height():
-    global max_height
-    r = requests.get("http://blockexplorer.com/testnet/q/getblockcount")
-    if r.status_code != 200:
-        print("Error 1")
-    else:
-        max_height = int(r.text)
+    try:
+        global max_height
+        r = requests.get("http://blockexplorer.com/testnet/q/getblockcount")
+        if r.status_code != 200:
+            print("Error 1")
+        else:
+            max_height = int(r.text)
+    except:
+        print('Catch this (max_height)')
+        return 'Catch this (max_height)'
 
 
 rpc_connection = AuthServiceProxy(
