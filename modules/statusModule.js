@@ -11,16 +11,15 @@ var statusModule = angular.module('statusModule', [])
       myDataPromise.then(function(result) {  
         var value = result;
         var type;
-        if (value === 8) {
+        if (value >= 8) {
           type = 'success';
-        } else if (value >= 4) {
+        } else if (value >= 6) {
           type = 'info';
-        } else if (value > 0) {
+        } else if (value >= 3) {
           type = 'warning';
         } else {
           type = 'danger';
         }
-        $scope.showWarning = (type === 'danger' || type === 'warning');
         $scope.dynamic = value * 12.5;
         $scope.type = type;
       });

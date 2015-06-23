@@ -22,13 +22,9 @@
     this.update = function() {
       $http.get('http://localhost:5000/wallet').success(function(data, status, headers, config) {
         dataStore.wallet = data;
-      }).error(function(data, status, headers, config) {
-        alert('\nData:\n' + data + '\nStatus:\n' + status + '\nHeaders:\n' + headers + '\nConfig:\n' + config);
       });
       $http.get('http://localhost:5000/transactions').success(function(data, status, headers, config) {
         dataStore.transactions = data;
-      }).error(function(data, status, headers, config) {
-        alert('\nData:\n' + data + '\nStatus:\n' + status + '\nHeaders:\n' + headers + '\nConfig:\n' + config);
       });
       $http.get('http://localhost:5000/status').success(function(data, status, headers, config) {
         dataStore.status = data;
@@ -49,6 +45,9 @@
     this.keyPress = function(key) {
       this.value1 += key;
       this.finalURI = this.URI + this.value1;
+    };
+    this.tickPress = function() {
+      $('#tickbutton').css('color', 'green');
     };
   });
 
