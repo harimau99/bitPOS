@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-controller="WalletController as wallet">
   <div class="row">
     <div class="col-xs-6">
       <div class="row rowbox">
@@ -18,9 +18,13 @@
         </div> 
       </div>
     </div>
-    <div class="col-xs-6 well">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data=bitcoin:mvwtUwzBT7EUW4tNB39R33MF9G4vrpyznH?amount=9&label=JamesG-Pi&size=200x200">
+    <div class="col-xs-6 well" id="walletqrwell">
+      <qrcode id="walletqr" size="210" data="{{wallet.URI}}"></qrcode>
     </div>
   </div>
 </div>
+
+<style type="text/css">
+  #walletqrwell {padding: 28px 14px 29px 14px;}
+</style>
   

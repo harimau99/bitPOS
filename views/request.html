@@ -1,13 +1,6 @@
 <div class="container" ng-controller="RequestController as request">
   <div class="row">
     <div class="col-xs-5">
-      <style type="text/css">
-        .tg  {border-collapse: collapse; border-spacing: 0; margin-top:10px;}
-        .tg td{font-size: 18px; padding: 1px; overflow: hidden; word-break: normal;}
-        .output {float:right; display: inline-block;}
-        button {width: 60px; height: 50px;}
-        canvas {margin-top: 34px;}
-      </style>
       <table class="tg">
         <tr>
           <td><div>BTC: </div></td>
@@ -36,7 +29,15 @@
       </table>
     </div>
     <div class="col-xs-7">
-      <qrcode size="210" data="{{request.finalURI}}"></qrcode>
-      </div>
+      <qrcode id="requestqr" size="210" data="{{request.finalURI}}"></qrcode>
+    </div>
   </div>
 </div>
+
+<style type="text/css">
+  .tg  {border-collapse: collapse; border-spacing: 0; margin-top:10px;}
+  .tg td{font-size: 18px; padding: 1px; overflow: hidden; word-break: normal;}
+  .output {float:right; display: inline-block;}
+  button {width: 60px; height: 50px;}
+  #requestqr canvas {margin-top: 34px;}
+</style>

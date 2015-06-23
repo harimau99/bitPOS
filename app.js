@@ -2,7 +2,7 @@
   var app = angular.module('bitPOS', ['bitPOS-directives', 'statusModule', 'ui.bootstrap', 'monospaced.qrcode']);
 
   app.controller('TabController', function() {
-    this.tab = 3;
+    this.tab = 1;
     this.isSet = function(checkTab) {
       return this.tab === checkTab;
     };
@@ -37,6 +37,10 @@
       });
     };
   }]);
+
+  app.controller('WalletController', function() {
+    this.URI = 'bitcoin:' + wallet.defaultAddress;
+  });
 
   app.controller('RequestController', function() {
     this.value1 = '';
