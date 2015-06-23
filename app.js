@@ -1,8 +1,8 @@
 (function() {
-  var app = angular.module('bitPOS', ['bitPOS-directives', 'statusModule', 'ui.bootstrap']);
+  var app = angular.module('bitPOS', ['bitPOS-directives', 'statusModule', 'ui.bootstrap', 'monospaced.qrcode']);
 
   app.controller('TabController', function() {
-    this.tab = 4;
+    this.tab = 3;
     this.isSet = function(checkTab) {
       return this.tab === checkTab;
     };
@@ -38,23 +38,15 @@
     };
   }]);
 
-  app.controller('NumPadController', ['$http', '$scope', '$sce', function($http, $scope, $sce) {
-    this.value = '';
+  app.controller('RequestController', function() {
+    this.value1 = '';
+    this.URI = 'bitcoin:' + wallet.defaultAddress + '?amount=';
+    this.finalURI = this.URI + this.value1;
     this.keyPress = function(key) {
-      this.value = this.value.concat(key);
+      this.value1 += key;
+      this.finalURI = this.URI + this.value1;
     };
-    this.tickPress = function() {
-      this.URL = 'https://api.qrserver.com/v1/create-qr-code/?data=bitcoin:' + wallet.address + "?"
-      params = {
-        amount: this.value,
-        label: 'JamesG-Pi',
-        size: '210x210'
-      };
-      this.URL = this.URL.concat(decodeURIComponent($.param(params)));
-      html = '<div class="col-xs-12 well" style="margin-top: 10px;"><img src="' + this.URL + '"></div>'
-      $scope.QRcode = $sce.trustAsHtml(html);
-    };
-  }]);
+  });
 
   
   var wallet = {
