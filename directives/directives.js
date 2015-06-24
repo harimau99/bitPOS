@@ -21,6 +21,13 @@ app.directive("request", function() {
   };
 });
 
+app.directive("sale", function() {
+  return {
+    restrict: "E",
+    templateUrl: "/views/sale.html"
+  };
+});
+
 app.directive("status", function() {
   return {
     restrict: "E",

@@ -12,9 +12,11 @@
     <script src="app.js"></script>
     <script src="directives/directives.js"></script>
     <script src="modules/statusModule.js"></script>
-    <script src="modules/qrcode.js"></script>
+    <script src="modules/saleModule.js"></script>
+    <script src="js/qrcode.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   </head>
 
   <body ng-controller="DataController as data">
@@ -31,23 +33,23 @@
           <a href="" ng-click="tab.setTab(3)">Request</a>
         </li>
         <li ng-class="{ active:tab.isSet(4) }">
-          <a href="" ng-click="tab.setTab(4)">Status</a>
+          <a href="" ng-click="tab.setTab(4)">Sale</a>
+        </li>
+        <li ng-class="{ active:tab.isSet(5) }">
+          <a href="" ng-click="tab.setTab(5)"><i class="fa fa-info-circle"></i></a>
         </li>
         <li>
-          <a href="" ng-click="tab.reload()">&#9851;</a>
+          <a href="" ng-click="tab.reload()"><i class="fa fa-refresh"></i></a>
         </li>
         <li>
-          <a href="" ng-click="data.update()">&#3647;</a>
+          <a href="" ng-click="data.update()"><i class="fa fa-btc"></i></a>
         </li>
       </ul>
-      <!--  Wallet Tab's Content  -->
       <wallet ng-show="tab.isSet(1)"></wallet>
-      <!--  Transactions Tab's Content  -->
       <transactions ng-show="tab.isSet(2)"></transactions>
-      <!--  Request Tab's Content  -->
       <request ng-show="tab.isSet(3)"></request>
-      <!--  Status Tab's Content  -->
-      <status ng-show="tab.isSet(4)"></status>
+      <sale ng-show="tab.isSet(4)"></sale>
+      <status ng-show="tab.isSet(5)"></status>
     </div>
   </body>
 </html>

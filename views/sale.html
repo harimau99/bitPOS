@@ -1,0 +1,41 @@
+<div class="container" ng-controller="SaleNumpadController as numpad">
+  <div class="row">
+    <div class="col-xs-5">
+      <table class="tg">
+        <tr>
+          <td><div>Item:</div></td>
+          <td colspan="2"><div class="output">{{numpad.itemcode}}</div></td>
+        </tr>
+        <tr>
+          <td><button ng-click="numpad.keyPress('1')">1</button></th>
+          <td><button ng-click="numpad.keyPress('2')">2</button></th>
+          <td><button ng-click="numpad.keyPress('3')">3</button></th>
+        </tr>
+        <tr>
+          <td><button ng-click="numpad.keyPress('4')">4</button></td>
+          <td><button ng-click="numpad.keyPress('5')">5</button></td>
+          <td><button ng-click="numpad.keyPress('6')">6</button></td>
+        </tr>
+        <tr>
+          <td><button ng-click="numpad.keyPress('7')">7</button></td>
+          <td><button ng-click="numpad.keyPress('8')">8</button></td>
+          <td><button ng-click="numpad.keyPress('9')">9</button></td>
+        </tr>
+        <tr>
+          <td><button>&nbsp;</button></td>
+          <td><button ng-click="numpad.keyPress('0')">0</button></td>
+          <td><button ng-click="numpad.tickPress()" id="saletickbutton">&#x2714</button></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-xs-7">
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .tg  {border-collapse: collapse; border-spacing: 0; margin-top:10px;}
+  .tg td{font-size: 18px; padding: 1px; overflow: hidden; word-break: normal;}
+  .output {float:right; display: inline-block;}
+  button {width: 60px; height: 50px;}
+</style>

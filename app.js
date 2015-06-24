@@ -1,8 +1,8 @@
 (function() {
-  var app = angular.module('bitPOS', ['bitPOS-directives', 'statusModule', 'ui.bootstrap', 'monospaced.qrcode']);
+  var app = angular.module('bitPOS', ['bitPOS-directives', 'statusModule', 'ui.bootstrap', 'monospaced.qrcode', 'saleModule']);
 
   app.controller('TabController', function() {
-    this.tab = 1;
+    this.tab = 4;
     this.isSet = function(checkTab) {
       return this.tab === checkTab;
     };
@@ -47,7 +47,7 @@
       this.finalURI = this.URI + this.value1;
     };
     this.tickPress = function() {
-      $('#tickbutton').css('color', 'green');
+      $('#requesttickbutton').css('color', 'green');
     };
   });
 

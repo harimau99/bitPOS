@@ -1,6 +1,6 @@
 var statusModule = angular.module('statusModule', [])
 
-  .controller('StatusCtrl', ['$scope', 'statusService', '$timeout', function($scope, statusService, $timeout) {
+  .controller('StatusController', ['$scope', 'statusService', '$timeout', function($scope, statusService, $timeout) {
     this.connections = 1;
     this.localHeight = 999;
     this.nextBlockFee = 9;
