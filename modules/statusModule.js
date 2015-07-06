@@ -23,7 +23,7 @@ var statusModule = angular.module('statusModule', [])
         $scope.dynamic = value * 12.5;
         $scope.type = type;
       });
-      $timeout(wrapper, 1000);
+      $timeout(wrapper, 10000);
     };
     wrapper(); 
   }])
