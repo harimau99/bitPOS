@@ -1,16 +1,13 @@
 var saleModule = angular.module('saleModule', [])
 
   .controller('SaleNumpadController', ['saleService', function(saleService) {
-    this.itemcode = '';
     this.db = [];
-    this.keyPress = function(key) {
-      this.itemcode += key;
-    };
+    controller = this;
     this.tickPress = function() {
       $('#saletickbutton').css('color', 'green');
       saleService.dbFetchall().then(function(data){
             for (var i = 0; i < data.length; i++) {
-              this.db.push(data[i]);
+              controller.db.push(data[i]);
             };
         });
     };

@@ -27,6 +27,36 @@ body {
   overflow: hidden;
 }
 
+table  { 
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-top:10px;
+}
+
+table td {
+  padding: 1px; 
+  overflow: hidden; 
+  word-break: normal;
+}
+
+table.numpad td{
+  font-size: 18px;
+}
+
+.output {
+  float:right;
+  display: inline-block;
+}
+
+button {
+  width: 60px;
+  height: 50px;
+}
+
+.numpad-rhs-align canvas, table.numpad-rhs-align {
+  margin-top: 34px;
+}
+
 a {
   color: #ac005f;
 }

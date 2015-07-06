@@ -1,51 +1,49 @@
 <div class="container" ng-controller="SaleNumpadController as numpad">
-  <div class="row">
+  <div class="row" ng-controller="RequestController as request">
     <div class="col-xs-5">
-      <table class="tg">
+      <table class="numpad">
         <tr>
           <td><div>Item:</div></td>
-          <td colspan="2"><div class="output">{{numpad.itemcode}}</div></td>
+          <td colspan="2"><div class="output">{{request.value1}}</div></td>
         </tr>
         <tr>
-          <td><button ng-click="numpad.keyPress('1')">1</button></th>
-          <td><button ng-click="numpad.keyPress('2')">2</button></th>
-          <td><button ng-click="numpad.keyPress('3')">3</button></th>
+          <td><button ng-click="request.keyPress('1')">1</button></td>
+          <td><button ng-click="request.keyPress('2')">2</button></td>
+          <td><button ng-click="request.keyPress('3')">3</button></td>
         </tr>
         <tr>
-          <td><button ng-click="numpad.keyPress('4')">4</button></td>
-          <td><button ng-click="numpad.keyPress('5')">5</button></td>
-          <td><button ng-click="numpad.keyPress('6')">6</button></td>
+          <td><button ng-click="request.keyPress('4')">4</button></td>
+          <td><button ng-click="request.keyPress('5')">5</button></td>
+          <td><button ng-click="request.keyPress('6')">6</button></td>
         </tr>
         <tr>
-          <td><button ng-click="numpad.keyPress('7')">7</button></td>
-          <td><button ng-click="numpad.keyPress('8')">8</button></td>
-          <td><button ng-click="numpad.keyPress('9')">9</button></td>
+          <td><button ng-click="request.keyPress('7')">7</button></td>
+          <td><button ng-click="request.keyPress('8')">8</button></td>
+          <td><button ng-click="request.keyPress('9')">9</button></td>
         </tr>
         <tr>
           <td><button>&nbsp;</button></td>
-          <td><button ng-click="numpad.keyPress('0')">0</button></td>
-          <td><button ng-click="numpad.tickPress()" id="saletickbutton">&#x2714</button></td>
+          <td><button ng-click="request.keyPress('0')">0</button></td>
+          <td><button ng-click="numpad.tickPress();" id="saletickbutton">&#x2714</button></td>
         </tr>
       </table>
     </div>
-    <div class="col-xs-7">
-      <div>
-        <p>Looping with ng-repeat:</p>
-        <table>
-          <tr ng-repeat="item in numpad.db">
-            <td ng-repeat="thingy in item">
-              {{thingy}}
-            </td>
-          </tr>
-        </table>
-      </div>
+    <div class="col-xs-7" ng-hide="thingy">
+      <table class="table table-bordered numpad-rhs-align">
+        <th>Itemcode</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th><button ng-click="thingy=true" style="width: auto; height: auto;">x</button></th>
+        <tr ng-repeat="row in numpad.db">
+          <td ng-repeat="value in row">
+            {{value}}
+          </td>
+          <td><button style="width: auto; height: auto;">x</button></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-xs-7" ng-show="thingy">
+      <qrcode class="numpad-rhs-align" size="210" data="{{request.finalURI}}"></qrcode>
     </div>
   </div>
 </div>
-
-<style type="text/css">
-  .tg  {border-collapse: collapse; border-spacing: 0; margin-top:10px;}
-  .tg td{font-size: 18px; padding: 1px; overflow: hidden; word-break: normal;}
-  .output {float:right; display: inline-block;}
-  button {width: 60px; height: 50px;}
-</style>

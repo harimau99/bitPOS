@@ -41,7 +41,6 @@
   app.controller('RequestController', function() {
     this.value1 = '';
     this.URI = 'bitcoin:' + wallet.defaultAddress + '?amount=';
-    this.finalURI = this.URI + this.value1;
     this.keyPress = function(key) {
       this.value1 += key;
       this.finalURI = this.URI + this.value1;
