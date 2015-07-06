@@ -29,6 +29,16 @@
       </table>
     </div>
     <div class="col-xs-7">
+      <div>
+        <p>Looping with ng-repeat:</p>
+        <table>
+          <tr ng-repeat="item in numpad.db">
+            <td ng-repeat="thingy in item">
+              {{thingy}}
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>

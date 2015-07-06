@@ -5,6 +5,7 @@ from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
 import requests
 import json
 import decimal
+import adsdb
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "http://localhost"}})
@@ -64,11 +65,19 @@ def status():
         next_block_fee = rpc_connection.estimatefee(1)
         message = {"maxHeight": max_height, "localHeight": local_height,
                    "connections": connections, 'nextBlockFee': next_block_fee}
-        print(message.values())
         return json.dumps(message, cls=DecimalEncoder)
     except:
         print('Catch this (status)')
         return 'Catch this (status)'
+
+
+@app.route("/db-fetchall")
+def db_fetchall():
+    conn = adsdb.connect(DataSource='c:\\', ServerType='local or remote')
+    cur = conn.cursor()
+    cur.execute('select * from bitPOSdb')
+    cur.fetchall()
+    return json.dumps(cur.fetchall())
 
 
 def get_max_height():
