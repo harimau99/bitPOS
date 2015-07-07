@@ -20,36 +20,15 @@
   </head>
 
   <body ng-controller="DataController as data">
-    <div ng-controller="TabController as tab">
-      <!--  Tab Navigation  -->
-      <ul class="nav nav-pills">
-        <li ng-class="{ active:tab.isSet(1) }">
-          <a href="" ng-click="tab.setTab(1)">Wallet</a>
-        </li>
-        <li ng-class="{ active:tab.isSet(2) }">
-          <a href="" ng-click="tab.setTab(2)">Transactions</a>
-        </li>
-        <li ng-class="{ active:tab.isSet(3) }">
-          <a href="" ng-click="tab.setTab(3)">Request</a>
-        </li>
-        <li ng-class="{ active:tab.isSet(4) }">
-          <a href="" ng-click="tab.setTab(4)">Sale</a>
-        </li>
-        <li ng-class="{ active:tab.isSet(5) }">
-          <a href="" ng-click="tab.setTab(5)"><i class="fa fa-info-circle"></i></a>
-        </li>
-        <li>
-          <a href="" ng-click="tab.reload()"><i class="fa fa-refresh"></i></a>
-        </li>
-        <li>
-          <a href="" ng-click="data.update()"><i class="fa fa-btc"></i></a>
-        </li>
-      </ul>
-      <wallet ng-show="tab.isSet(1)"></wallet>
-      <transactions ng-show="tab.isSet(2)"></transactions>
-      <request ng-show="tab.isSet(3)"></request>
-      <sale ng-show="tab.isSet(4)"></sale>
-      <status ng-show="tab.isSet(5)"></status>
-    </div>
+    <tabset type="pills" justified="true">
+      <tab heading="Wallet"><wallet></wallet></tab>
+      <tab heading="Transactions"><transactions></transactions></tab>
+      <tab heading="Request"><request></request></tab>
+      <tab heading="Sale"><sale></sale></tab>
+      <tab><tab-heading><i class="fa fa-info-circle"></i></tab-heading><status></status></tab>
+      <li><a onclick="location.reload()"><tab-heading><i class="fa fa-refresh"></i></tab-heading></a></li>
+      <li><a ng-click="data.update()"><tab-heading><i class="fa fa-btc"></i></tab-heading></a></li>
+    </tabset>
   </body>
 </html>
+

@@ -1,19 +1,6 @@
 (function() {
   var app = angular.module('bitPOS', ['bitPOS-directives', 'statusModule', 'ui.bootstrap', 'monospaced.qrcode', 'saleModule']);
 
-  app.controller('TabController', function() {
-    this.tab = 4;
-    this.isSet = function(checkTab) {
-      return this.tab === checkTab;
-    };
-    this.setTab = function(activeTab) {
-      this.tab = activeTab;
-    };
-    this.reload = function() {
-      location.reload();
-    };
-  });
-
   app.controller('DataController', ['$http', function($http) {
     var dataStore = this;
     this.wallet = wallet;

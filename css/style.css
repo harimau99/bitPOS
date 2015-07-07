@@ -64,23 +64,7 @@ a:hover, a:focus {
   text-decoration: underline;
 }
 
-.nav-pills {
+.nav.nav-pills {
   margin: 2px;
 }
 
-.nav-pills > li > a:hover,
-.nav-pills > li > a:focus{
-  color: #ac005f;
-}
-
-.nav-pills > li.active > a,
-.btn-primary,
-.btn-primary:focus {
-  background: #ac005f;
-  border: 0;
-}
-
-.nav-pills > li.active > a:hover,
-.btn-primary:hover {
-  background: #ac005f;
-}
