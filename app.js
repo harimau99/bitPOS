@@ -45,9 +45,6 @@
       this.value1 += key;
       this.finalURI = this.URI + this.value1;
     };
-    this.tickPress = function() {
-      $('#requesttickbutton').css('color', 'green');
-    };
   });
 
   

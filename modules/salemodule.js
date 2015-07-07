@@ -4,7 +4,6 @@ var saleModule = angular.module('saleModule', [])
     this.db = [];
     controller = this;
     this.tickPress = function() {
-      $('#saletickbutton').css('color', 'green');
       saleService.dbFetchall().then(function(data){
             for (var i = 0; i < data.length; i++) {
               controller.db.push(data[i]);
