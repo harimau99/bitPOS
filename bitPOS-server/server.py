@@ -1,10 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, g
 from flask.ext.cors import CORS
-import datetime
 from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
 import requests
 import json
 import decimal
+import time
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "http://localhost"}})
@@ -15,6 +15,17 @@ class DecimalEncoder(json.JSONEncoder):
         if isinstance(o, decimal.Decimal):
             return float(o)
         super(DecimalEncoder, self).default(o)
+
+
+@app.before_request
+def before_request():
+    g.start = time.time()
+
+
+@app.teardown_request
+def teardown_request(exception=None):
+    #print "%.5f" % (time.time() - g.start)
+    pass
 
 
 @app.route("/")
@@ -29,12 +40,12 @@ def wallet():
         default_address = rpc_connection.getaccountaddress("")
         last_transaction = rpc_connection.listtransactions("", 1)[0]
         last_time = last_transaction["time"]
-        last_timedelta = int(datetime.datetime.now().strftime('%s')) - last_transaction["time"]
+        last_timedelta = int(time.time() - last_transaction["time"])
         last_amount = float(last_transaction["amount"])
         last_confirmations = last_transaction["confirmations"]
 
-        message = {"balance": balance, "defaultAddress": default_address, "lastTransaction": {
-                   "time": last_time, "timedelta": last_timedelta,
+        message = {"balance": balance, "defaultAddress": default_address,
+                   "lastTransaction": {"time": last_time, "timedelta": last_timedelta,
                    "amount": last_amount, "confirmations": last_confirmations}}
         return json.dumps(message)
     except:
@@ -47,7 +58,7 @@ def transactions():
     try:
         transactions = rpc_connection.listtransactions("", 5)
         message = {'t1': transactions[0], 't2': transactions[1],
-        't3': transactions[2], 't4': transactions[3], 't5': transactions[4]}
+                   't3': transactions[2], 't4': transactions[3], 't5': transactions[4]}
         return json.dumps(message, cls=DecimalEncoder)
     except:
         print('Catch this (transactions)')
