@@ -34,3 +34,11 @@ app.directive("status", function() {
     templateUrl: "/views/status.html"
   };
 });
+
+app.directive("numpad", function() {
+  return {
+    restrict: "E",
+    transclude: true,
+    templateUrl: "/views/numpad.html"
+  };
+});

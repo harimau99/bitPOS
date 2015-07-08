@@ -1,39 +1,10 @@
-<div class="container" ng-controller="RequestController as request">
+<div class="container" ng-controller="RequestController as numpad">
   <div class="row">
     <div class="col-xs-5">
-      <table class="numpad">
-        <tr>
-          <td><div>BTC: </div></td>
-          <td colspan="2"><div class="output">{{request.value1}}</div></td>
-        </tr>
-        <tr>
-          <td><button ng-click="request.keyPress('1')">1</button></th>
-          <td><button ng-click="request.keyPress('2')">2</button></th>
-          <td><button ng-click="request.keyPress('3')">3</button></th>
-        </tr>
-        <tr>
-          <td><button ng-click="request.keyPress('4')">4</button></td>
-          <td><button ng-click="request.keyPress('5')">5</button></td>
-          <td><button ng-click="request.keyPress('6')">6</button></td>
-        </tr>
-        <tr>
-          <td><button ng-click="request.keyPress('7')">7</button></td>
-          <td><button ng-click="request.keyPress('8')">8</button></td>
-          <td><button ng-click="request.keyPress('9')">9</button></td>
-        </tr>
-        <tr>
-          <td><button ng-click="request.keyPress('.')">.</button></td>
-          <td><button ng-click="request.keyPress('0')">0</button></td>
-          <td><button ng-click="request.tickPress(); myStyle={color:'green'}" ng-style="myStyle" id="requesttickbutton">&#x2714</button></td>
-        </tr>
-      </table>
+      <numpad>BTC:</numpad>
     </div>
     <div class="col-xs-7">
-      <qrcode class="numpad-rhs-align" size="210" data="{{request.finalURI}}"></qrcode>
+      <qrcode class="numpad-rhs-align" size="210" data="{{numpad.finalURI}}"></qrcode>
     </div>
   </div>
 </div>
-
-<style type="text/css">
-  
-</style>

@@ -1,32 +1,7 @@
-<div class="container" ng-controller="SaleNumpadController as numpad">
-  <div class="row" ng-controller="RequestController as request">
+<div class="container" ng-controller="SaleController as numpad">
+  <div class="row">
     <div class="col-xs-5">
-      <table class="numpad">
-        <tr>
-          <td><div>Item:</div></td>
-          <td colspan="2"><div class="output">{{request.value1}}</div></td>
-        </tr>
-        <tr>
-          <td><button ng-click="request.keyPress('1')">1</button></td>
-          <td><button ng-click="request.keyPress('2')">2</button></td>
-          <td><button ng-click="request.keyPress('3')">3</button></td>
-        </tr>
-        <tr>
-          <td><button ng-click="request.keyPress('4')">4</button></td>
-          <td><button ng-click="request.keyPress('5')">5</button></td>
-          <td><button ng-click="request.keyPress('6')">6</button></td>
-        </tr>
-        <tr>
-          <td><button ng-click="request.keyPress('7')">7</button></td>
-          <td><button ng-click="request.keyPress('8')">8</button></td>
-          <td><button ng-click="request.keyPress('9')">9</button></td>
-        </tr>
-        <tr>
-          <td><button>&nbsp;</button></td>
-          <td><button ng-click="request.keyPress('0')">0</button></td>
-          <td><button ng-click="numpad.tickPress(); myStyle={color:'green'}" ng-style="myStyle" id="saletickbutton">&#x2714</button></td>
-        </tr>
-      </table>
+      <numpad>Item:</numpad>
     </div>
     <div class="col-xs-7" ng-hide="thingy">
       <table class="table table-bordered numpad-rhs-align">
@@ -34,16 +9,16 @@
         <th>Name</th>
         <th>Price</th>
         <th><button ng-click="thingy=true" style="width: auto; height: auto;">x</button></th>
-        <tr ng-repeat="row in numpad.db">
+        <tr ng-repeat="row in request.db">
           <td ng-repeat="value in row">
-            {{value}}
+            {{numpad.value}}
           </td>
           <td><button style="width: auto; height: auto;">x</button></td>
         </tr>
       </table>
     </div>
     <div class="col-xs-7" ng-show="thingy">
-      <qrcode class="numpad-rhs-align" size="210" data="{{request.finalURI}}"></qrcode>
+      <qrcode class="numpad-rhs-align" size="210" data="{{numpad.finalURI}}"></qrcode>
     </div>
   </div>
 </div>

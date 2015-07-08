@@ -1,0 +1,26 @@
+<table class="numpad">
+<tr>
+  <td><span ng-transclude></span></td>
+  <td colspan="2"><div class="output">{{numpad.value1}}</div></td>
+</tr>
+<tr>
+  <td><button ng-click="numpad.keyPress('1')">1</button></td>
+  <td><button ng-click="numpad.keyPress('2')">2</button></td>
+  <td><button ng-click="numpad.keyPress('3')">3</button></td>
+</tr>
+<tr>
+  <td><button ng-click="numpad.keyPress('4')">4</button></td>
+  <td><button ng-click="numpad.keyPress('5')">5</button></td>
+  <td><button ng-click="numpad.keyPress('6')">6</button></td>
+</tr>
+<tr>
+  <td><button ng-click="numpad.keyPress('7')">7</button></td>
+  <td><button ng-click="numpad.keyPress('8')">8</button></td>
+  <td><button ng-click="numpad.keyPress('9')">9</button></td>
+</tr>
+<tr>
+  <td><button ng-click="numpad.keyPress('.')">.</button></td>
+  <td><button ng-click="numpad.keyPress('0')">0</button></td>
+  <td><button ng-click="myStyle={color:'green'}" ng-style="myStyle">&#x2714</button></td>
+</tr>
+</table>
